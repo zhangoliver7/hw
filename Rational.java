@@ -17,7 +17,7 @@ public class Rational {
 	}
 
 	public long floatValue() {
-		return (long)(numerator/denominator);
+		return (double)(numerator/denominator);
 	}
 
 	public void multiply(Rational n) {
