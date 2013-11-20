@@ -1,4 +1,9 @@
-public class Rational {
+//Oliver Zhang
+//pd 8
+//2013-11-19
+//HW 28
+
+public class Rational implements Comparable {
 	public int numerator;
 	public int denominator;
 	
@@ -14,6 +19,10 @@ public class Rational {
 
 	public String toString() {
 		return numerator + "/" + denominator;
+	}
+
+	public boolean equals(Object obj) {
+		return this.compareTo((Rational)obj) == 0;
 	}
 
 	public long floatValue() {
@@ -48,13 +57,13 @@ public class Rational {
 		int den = denominator;
 	
 		if (num > den) {
-			int diff = num - den;
+			int diff = num % den;
 			
 			while (num % den > 0) {
 			    
 			    num = den;
 			    den = diff;
-			    diff = num - den;
+			    diff = num % den;
 			    if (diff < 0) diff *=-1;
 			}
 			
@@ -78,7 +87,7 @@ public class Rational {
 	}
 
 	public static int gcder (int a, int b) {
-		int diff = a - b;
+		int diff = a % b;
 		if (a > b) {
 			if (a % b == 0) {
 			    return b;
@@ -92,65 +101,48 @@ public class Rational {
 		}
         }
 
-	public int compareTo(Rational n) {
-		n.reduce();
+	public int compareTo(Object n) {
+		((Rational)n).reduce();
 		this.reduce();
-		if (n.denominator == denominator) return numerator - n.numerator;
 		
-		
+		if (((Rational)n).denominator == denominator) return numerator - ((Rational)n).numerator;
+	
+	
 		else {
 			int spotHoldD = denominator;
+		
+		
+			numerator = numerator * ((Rational)n).denominator;
+		
+		
+			((Rational)n).numerator = ((Rational)n).numerator * denominator;
 			
-			
-			numerator = numerator * n.denominator;
-			
-			
-			n.numerator = n.numerator * denominator;
-			System.out.println(n);
-			System.out.println(this);
-			return numerator - n.numerator;
+			return numerator - ((Rational)n).numerator;
 		}
+
 	}
 	
+	
+
 	public static void main(String[] args) {
 		Rational n = new Rational();
 		Rational s = new Rational(7,9);
+		Rational a = new Rational(7,9);
 		Rational t = new Rational(7,10);
 		Rational u = new Rational(14,4);
+		Rational v = new Rational(28,8);
+				
+
+
 		
-		/*System.out.println(s);
-		System.out.println(s.EuclidGCD());
-		System.out.println(t.EuclidGCD());
-		System.out.println(u.EuclidGCD());
-		u.reduce();
-		s.reduce();
-		t.reduce();
-		System.out.println(s);
-		System.out.println(t);
-		System.out.println(u);*/
-		System.out.println(t.compareTo(u));
-		/*System.out.println(n);
-		System.out.println(s);
-		System.out.println(t);
-
-		n.multiply(s);
-
-		System.out.println(n);
-		System.out.println(s);
-		System.out.println(t);
-		System.out.println(u);
-		n.divide(s);
-		s.multiply(t);
-		System.out.println(n);
-		System.out.println(s);
-		System.out.println(t);
-		System.out.println(u);
-		t.divide(s);
-		t.multiply(u);
-		System.out.println(n);
-		System.out.println(s);
-		System.out.println(t);
-		System.out.println(u);*/
+		
+		System.out.println(v);
+		System.out.println(a.compareTo(s));
+		System.out.println(v.compareTo(u));
+		System.out.println(u.compareTo(v));
+		System.out.println(s.equals(a));
+		System.out.println(v.equals(u));
+		System.out.println(u.equals(v));
 		
 
 	}
