@@ -1,4 +1,7 @@
-//skeleton file for class Hexadecimal
+//Oliver Zhang
+//pd 8
+//2013-11-21
+//HW 30
 
 public class Hexdecimal implements Comparable {
 
@@ -24,7 +27,7 @@ public class Hexdecimal implements Comparable {
       post: sets _decNum to n, _hexNum to equiv string of hex digits
       =====================================*/
     public Hexdecimal( int n ) {
-	_decNum = 0;
+	_decNum = n;
 	_hexNum = hexToBinR(n);
 
     }
@@ -58,7 +61,17 @@ public class Hexdecimal implements Comparable {
           hexToBin(42) -> "2A"
       =====================================*/
     public static String hexToBin( int n ) {
-	return "";
+	String retStr = "";
+	int remainder = 0;
+	String placehold = "";
+	while (n > 0) {
+	    remainder = n % 16;
+	    n = n / 16;
+	    placehold = retStr;
+	    
+	    retStr = getHexDigit(remainder) + placehold;
+	}
+	return retStr;
     }
 
 
@@ -80,12 +93,13 @@ public class Hexdecimal implements Comparable {
 	String retStr = "";
 	int remainder = 0;
 	String placehold = "";
-	while (n > 0) {
-	    remainder = n % 16;
-	    n = n / 16;
-	    placehold = retStr;
-	    
-	    retStr = getHexDigit(remainder) + placehold;
+	if (n < 16) 
+		return getHexDigit(n);
+	else {
+		retStr += getHexDigit(n % 16);
+		placehold = retStr;
+		n = n / 16;
+		retStr = hexToBinR(n) + placehold;
 	}
 	return retStr;
     }
@@ -98,7 +112,9 @@ public class Hexdecimal implements Comparable {
             Object), or if this and other represent equal binary values
       =============================================*/
     public boolean equals( Object other ) { 
-	return true;
+	return this == other 
+		||
+		this.compareTo(other) == 0;
     }
 
 
@@ -109,7 +125,10 @@ public class Hexdecimal implements Comparable {
             negative integer if this<input, positive integer otherwise
       =============================================*/
     public int compareTo( Object other ) {
-	return 0;
+	if (! (other instanceof Hexdecimal) || ! (this instanceof Hexdecimal))
+		throw new ClassCastException("\nYo, you can't compare stuff other than HexaDecimals, ya noob");
+	return this._decNum - ((Hexdecimal)other)._decNum;
+	
     }
 
 
@@ -122,7 +141,8 @@ public class Hexdecimal implements Comparable {
         Hexdecimal h1 = new Hexdecimal(10);
         Hexdecimal h2 = new Hexdecimal(10);
         Hexdecimal h3 = h1;
-        Hexdecimal h4 = new Hexdecimal(2);
+        Hexdecimal h4 = new Hexdecimal(30);
+	String foo = "foo";
 
         System.out.println( h1 );
         System.out.println( h2 );
@@ -131,24 +151,28 @@ public class Hexdecimal implements Comparable {
 
         // Here be Ye Olde Friendly Top-Comment-Bar.
         //    Move it down as you incrementally develop & test...
-        /*=========================================
+        
         System.out.println( "\n==..." );
         System.out.println( h1 == h2 ); //should be false
         System.out.println( h1 == h3 ); //should be true
-
+	
         System.out.println( "\n.equals()..." );
         System.out.println( h1.equals(h2) ); //should be true
         System.out.println( h1.equals(h3) ); //should be true
         System.out.println( h3.equals(h1) ); //should be true
         System.out.println( h4.equals(h2) ); //should be false
         System.out.println( h1.equals(h4) ); //should be false
-
+	/*=========================================
+	
+	 =========================================*/
         System.out.println( "\n.compareTo..." );
         System.out.println( h1.compareTo(h2) ); //should be 0
         System.out.println( h1.compareTo(h3) ); //should be 0
         System.out.println( h1.compareTo(h4) ); //should be neg
         System.out.println( h4.compareTo(h1) ); //should be pos
-          =========================================*/
+	System.out.println( h1.compareTo(foo) ); //should be pos
+	
+         
     }//end main()
 
 } //end class
