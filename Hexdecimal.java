@@ -42,6 +42,26 @@ public class Hexdecimal implements Comparable {
 	return _hexNum;
     }
 
+    public static String ArrayElementsINT(int[] x) {
+	String retStr = "";
+	for (int y = 0;y < x.length; y++) {
+	    retStr += x[y]; 
+	}
+	return retStr;
+	 
+    }
+
+    
+    public static String ArrayElementsSTR(String[] x) {
+	String retStr = "";
+	for (int y = 0;y < x.length; y++) {
+	    retStr += x[y]; 
+	    retStr += " ";
+	}
+	return retStr;
+	 
+    }
+
     public static String getHexDigit (int n) {
 	return Hexdigits.substring(n,(n+1));
     }
@@ -138,12 +158,16 @@ public class Hexdecimal implements Comparable {
         System.out.println();
         System.out.println( "Testing ..." );
 
+	
         Hexdecimal h1 = new Hexdecimal(10);
         Hexdecimal h2 = new Hexdecimal(10);
         Hexdecimal h3 = h1;
-        Hexdecimal h4 = new Hexdecimal(30);
+        Hexdecimal h4 = new Hexdecimal(1724);
 	String foo = "foo";
-
+	int[] hey = {1,2,3,4,5,6,99,0};
+	String[] heyo = {"what", "is", "love"};
+	System.out.println( ArrayElementsINT(hey));
+	System.out.println( ArrayElementsSTR(heyo));
         System.out.println( h1 );
         System.out.println( h2 );
         System.out.println( h3 );       
