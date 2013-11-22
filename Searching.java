@@ -73,8 +73,17 @@ public class Searching {
             returns -1 if target not found
       ==================================================*/
     public static int linSearch ( Binary[] a, Binary target ) {
-        //YOUR IMPLEMENTATION HERE
-        return -1; //placeholder
+        int tPos = -1;
+	int i = 0;
+
+	while (i < a.length) {
+	    if ( a[i].getBinNum().equals(target)) {
+		tPos = i;
+		break;
+	    }
+	    i++;
+	}
+        return tPos; //placeholder
     }
 
 
@@ -84,7 +93,7 @@ public class Searching {
       post: returns index of first occurrence of target, or
             returns -1 if target not found
       ==================================================*/
-    public static int linSearch ( Hexadecimal[] a, Hexadecimal target ) {
+    public static int linSearch ( Hexdecimal[] a, Hexdecimal target ) {
         //YOUR IMPLEMENTATION HERE
         return -1; //placeholder
     }
@@ -128,7 +137,7 @@ public class Searching {
 
         //TIP: kill & yank the top comment bar down one section 
         //     at a time to test your methods as they develop.
-        /*==================================================
+       
 
 
 
@@ -196,7 +205,7 @@ public class Searching {
         System.out.println( linSearch(bArr, new Binary(256)) );
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
+	 /*==================================================
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         System.out.println("\nNow testing linSearch on Hexadecimal array...");
