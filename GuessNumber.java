@@ -1,19 +1,7 @@
-/*==================================================
-  class GuessNumber -- fun fun fun!
-
-  eg, sample interaction with end user:
-  Guess a # fr 1-100: 50
-  Too high
-  Guess a # fr 1-49: 25
-  Too low
-  Guess a # fr 26-49: 38
-  Correct! It took 3 guesses
-  ==================================================*/
-
-/*==================================================
-  the Breakdown:
-  Blah blah blah, yakkity smakkity, and a nice tall glass of OJ...
-  ==================================================*/
+//Oliver Zhang
+//pd 8
+//2013-11-25
+//HW 32
 
 
 import cs1.Keyboard; /* must have cs1 dir in same dir as this file 
@@ -46,6 +34,27 @@ public class GuessNumber {
       post: 
       ==================================================*/
     public void playRec() {
+	System.out.println("Guess a # from" + _lo + "-" + _hi + ":");
+        int ans = Keyboard.readInt();
+	if (ans == _target) {
+		_guessCtr += 1;
+		System.out.println("Correct! It took " + _guessCtr + " times.");
+	}
+	else { 
+		_guessCtr += 1;
+		if (ans > _target) {
+			_hi = ans - 1;
+			System.out.println("too high.");
+			this.playRec();
+		}
+		else if (ans < _target) {
+			_lo = ans + 1;
+			System.out.println("too low.");
+			this.playRec();
+			
+		}
+	}
+	
 	
     }
 
@@ -57,31 +66,32 @@ public class GuessNumber {
       post: 
       ==================================================*/
     public void playIter() {
+	System.out.println("Guess a # from" + _lo + "-" + _hi + ":");
         int ans = Keyboard.readInt();
-	while (ans != target) {
-	    if (ans > target) {
+	while (ans != _target) {
+	    if (ans > _target) {
 		_hi = ans -1;
 		System.out.println("Too high.");
 	    }
-	    else if (ans < target) {
+	    else if (ans < _target) {
 		_lo = ans + 1;
 		System.out.println("Too low.");
 	    }
 	    _guessCtr += 1;
-	    System.out.println("Guess a # from" + _lo + "-" + _hi + ":";
+	    System.out.println("Guess a # from" + _lo + "-" + _hi + ":");
 	    ans = Keyboard.readInt();
 	}
-	else {
-	    System.out.println("Correct! It took" + _guessCtr + "times.");
-	}
+	_guessCtr += 1;
+	System.out.println("Correct! It took " + _guessCtr + " times.");
+
     }
 
 
     //wrapper for playRec/playIter to simplify calling
     public void play() { 
         //use one or the other below:
-        //playRec();
-        playIter();
+        playRec();
+        //playIter();
     }
 
 
