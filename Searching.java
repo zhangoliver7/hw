@@ -1,6 +1,7 @@
-/*==================================================
-  class Searching
-  ==================================================*/
+//Oliver Zhang
+//pd 8
+//2013-11-24
+//HW 31
 
 public class Searching {
     
@@ -77,7 +78,7 @@ public class Searching {
 	int i = 0;
 
 	while (i < a.length) {
-	    if ( a[i].getBinNum().equals(target)) {
+	    if ( a[i].equals(target)) {
 		tPos = i;
 		break;
 	    }
@@ -88,14 +89,23 @@ public class Searching {
 
 
     /*==================================================
-      int linSearch(Hexadecimal[],Hexadecimal) -- searches an array 
-      of Hexadecimals for target
+      int linSearch(Hexdecimal[],Hexdecimal) -- searches an array 
+      of Hexdecimals for target
       post: returns index of first occurrence of target, or
             returns -1 if target not found
       ==================================================*/
     public static int linSearch ( Hexdecimal[] a, Hexdecimal target ) {
-        //YOUR IMPLEMENTATION HERE
-        return -1; //placeholder
+        int tPos = -1;
+	int i = 0;
+
+	while (i < a.length) {
+	    if ( a[i].equals(target)) {
+		tPos = i;
+		break;
+	    }
+	    i++;
+	}
+        return tPos; //placeholder
     }
 
 
@@ -105,7 +115,20 @@ public class Searching {
       post: returns index of first occurrence of target, or
             returns -1 if target not found
       ==================================================*/
-        //YOUR FUNCTION HERE
+    public static int objSearch ( Comparable[] a, Comparable target ) {
+	int tPos = -1;
+	int i = 0;
+
+	while (i < a.length) {
+	  
+	    if ( a[i].equals(target)) {
+		tPos = i;
+		break;
+	    }
+	    i++;
+	}
+        return tPos; //placeholder
+    }
 
 
 
@@ -140,7 +163,7 @@ public class Searching {
        
 
 
-
+	/*==================================================
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         System.out.println("\nNow testing linSearch on int array...");
 
@@ -205,43 +228,83 @@ public class Searching {
         System.out.println( linSearch(bArr, new Binary(256)) );
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-	 /*==================================================
+	
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-        System.out.println("\nNow testing linSearch on Hexadecimal array...");
+        System.out.println("\nNow testing linSearch on Hexdecimal array...");
 
-        //declare Hexadecimal array
-        Hexadecimal[] hArr = new Hexadecimal[10];
+        //declare Hexdecimal array
+        Hexdecimal[] hArr = new Hexdecimal[10];
 
         printArray( hArr ); //should show array of nulls
 
-        //initialize Hexadecimal array
+        //initialize Hexdecimal array
         //Q: Why would a FOREACH loop not do the job here?
         for( int i = 0; i < hArr.length; i++ ) {
-            hArr[i] = new Hexadecimal( (int)(100 * Math.random()) );
+            hArr[i] = new Hexdecimal( (int)(100 * Math.random()) );
         }
 
-        printArray( hArr ); //should now show Hexadecimal numbers
+        printArray( hArr ); //should now show Hexdecimal numbers
 
         //search for the value in slot 3 in array
         System.out.println( "Searching for " + hArr[3] + "..." );
         System.out.println( linSearch(hArr, hArr[3] ) );
 
         //search for 5 in array
-        System.out.println( linSearch(hArr, new Hexadecimal(5) ) );
+        System.out.println( linSearch(hArr, new Hexdecimal(5) ) );
 
         //search for 100 in array
-        System.out.println( linSearch(hArr, new Hexadecimal(256)) );
+        System.out.println( linSearch(hArr, new Hexdecimal(256)) );
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+	==================================================*/
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         System.out.println("\nNow testing linSearch on Comparable array...");
-        //INSERT YOUR TESTING MACHINERY HERE
-        //  Follow the pattern of the machinery above.
-        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	//declare Hexdecimal array
+        Hexdecimal[] hArr2 = new Hexdecimal[10];
+	Binary[] bArr2 = new Binary[10];
+	int[] intArr = new int[10];
+        printArray( hArr2 ); 
+	printArray( bArr2 );
+	printArray( intArr);
+        
+        for( int i = 0; i < hArr2.length; i++ ) {
+            hArr2[i] = new Hexdecimal( (int)(100 * Math.random()) );
+        }
+	
+	for( int i = 0; i < bArr2.length; i++ ) {
+            bArr2[i] = new Binary( (int)(100 * Math.random()) );
+        }
 
-        ==================================================*/
+	for( int i = 0; i < intArr.length; i++ ) {
+            intArr[i] = i;
+        }
+
+        printArray( hArr2 ); //should now show Hexdecimal numbers
+	printArray( bArr2 );
+	printArray( intArr);
+        //search for the value in slot 3 in array
+        System.out.println( "Searching for " + hArr2[3] + "..." );
+        System.out.println( objSearch(hArr2, hArr2[3] ) );
+
+	System.out.println( "Searching for " + bArr2[3] + "..." );
+        System.out.println( objSearch(bArr2, bArr2[3] ) );
+        //search for 5 in array
+	System.out.println( "Searching for 5" );
+        System.out.println( objSearch(hArr2, new Hexdecimal(5) ) );
+	System.out.println( objSearch(bArr2, new Binary(5) ) );
+        //search for 100 in array
+	System.out.println( "Searching for 10" );
+        System.out.println( objSearch(hArr2, new Hexdecimal(256)) );
+	System.out.println( objSearch(bArr2, new Binary(256)) );
+	//testing on nonComparable objects (Returned a compile error)
+	//System.out.println( "You are entering error-land:\nSearching for 3" );
+	//System.out.println (objSearch(intArr, 3));
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~        
+
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	 
+        
     }//end main()
 
 }//end class Searching
