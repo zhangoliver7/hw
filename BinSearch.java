@@ -1,11 +1,10 @@
-/*==================================================
-  class BinSearch
-  skeleton file
-  ==================================================*/
-
+//Oliver Zhang
+//pd 8
+//2013-11-26
+//HW 33
 public class BinSearch {
 
-    private int _guessCtr;
+    private static int _guessCtr;
     /*==================================================
       int binSearch(int[],int) -- searches an array of ints for target int
       pre:  input array is sorted in ascending order
@@ -13,38 +12,59 @@ public class BinSearch {
       ==================================================*/
     public static int binSearch ( int[] a, int target ) {
 	
-	//return binSearchIter( a, target, 0, a.length-1);
-        return binSearchRec( a, target, 0, a.length-1 );
+	return binSearchIter( a, target, 0, a.length-1);
+	// return binSearchRec( a, target, 0, a.length-1 );
     }
 
 
     public static int binSearchRec( int[] a, int target, int lo, int hi ) {
         int guess = ((hi - lo) / 2) + lo;
-	if (!isSorted(a))
+	if (!isSorted(a)) {
 	    System.out.println("The array is not sorted, BEGONE");
+	    return -1;
+	}
 	else if (a[guess] == target) {
 	    return guess;
 	}
 	else {
-	    if (a[guess] > target) {
+	    if (lo == hi) 
+		return -1;
+	    else if (a[guess] > target) {
 		hi = guess;
 		return binSearchRec(a, target, lo, hi);
 	    }
-	    else {
+	    else  {
 		lo = guess;
 		return binSearchRec(a, target, lo, hi);
 	    }
+	    
 	}
-	    
-	
-	    
-        return -1; //placeholder
+
     }
 
 
     public static int binSearchIter( int[] a, int target, int lo, int hi ) {
-         
-        return -1; //placeholder
+        int guess = ((hi - lo) / 2) + lo;
+	if (!isSorted(a)) {
+	    System.out.println("The array is not sorted, BEGONE");
+	}
+	_guessCtr += 1;
+	while (a[guess] != target) {
+	    if (lo == hi) {
+		return -1;
+	    }
+	    guess = ((hi - lo) / 2) + lo;
+	    System.out.println("HELLO\n" + hi + "\n" + lo + "\n" + guess);
+	    if (a[guess] > target) 
+		hi = guess;
+	    else if (a[guess] < target)
+		lo = guess;
+	    _guessCtr += 1;
+
+	    
+	}
+	System.out.println("It took " + _guessCtr + " guesses.");
+        return guess; //placeholder
     }
 
 
@@ -79,7 +99,7 @@ public class BinSearch {
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         System.out.println("\nNow testing binSearch on int array...");
-
+	int rand = (int)(Math.random() * 100);
         //Declare and initialize array of ints
         int[] iArr = { 2, 4, 6, 8, 6, 42 };
         printArray( iArr );
@@ -94,8 +114,8 @@ public class BinSearch {
 	    iArr3[x] = x+1;
 	}
 	System.out.println(isSorted(iArr3));
-	System.out.println(iArr3[77]);
-	System.out.println( binSearch(iArr3, 55));
+	printArray(iArr3);
+	System.out.println( binSearch(iArr3, rand));
 	
 	/*==================================================
         //search for 6 in array 
