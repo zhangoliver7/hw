@@ -40,6 +40,9 @@ public class Binary implements Comparable {
         return _binNum; //placeholder to get past compiler
     }
 
+    public String getBinNum() {
+	return _binNum;
+    }
 
     /*=====================================
       String decToBin(int) -- converts base-10 input to binary

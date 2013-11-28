@@ -99,7 +99,7 @@ public class GuessNumber {
     public static void main( String[] args ) {
 
         //instantiate a new game
-        GuessNumber g = new GuessNumber(1,100);
+        GuessNumber g = new GuessNumber(1,900000);
 
         //start the game
         g.play();
