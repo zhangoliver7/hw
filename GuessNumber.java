@@ -36,7 +36,11 @@ public class GuessNumber {
     public void playRec() {
 	System.out.println("Guess a # from" + _lo + "-" + _hi + ":");
         int ans = Keyboard.readInt();
-	if (ans == _target) {
+	if (ans > _hi || ans < _lo) {
+	    System.out.println("You picked a number out of range");
+	    this.playRec();
+	}
+	else if (ans == _target) {
 		_guessCtr += 1;
 		System.out.println("Correct! It took " + _guessCtr + " times.");
 	}
@@ -69,7 +73,11 @@ public class GuessNumber {
 	System.out.println("Guess a # from" + _lo + "-" + _hi + ":");
         int ans = Keyboard.readInt();
 	while (ans != _target) {
-	    if (ans > _target) {
+	    if (ans > _hi || ans < _lo) {
+		System.out.println("You picked a number out of range");
+		this.playRec();
+	    }
+	    else if (ans > _target) {
 		_hi = ans -1;
 		System.out.println("Too high.");
 	    }
@@ -99,7 +107,11 @@ public class GuessNumber {
     public static void main( String[] args ) {
 
         //instantiate a new game
+<<<<<<< HEAD
+        GuessNumber g = new GuessNumber(1,25);
+=======
         GuessNumber g = new GuessNumber(1,900000);
+>>>>>>> 35dc8597c9c6ffc99e2707c631a3a7179161f14f
 
         //start the game
         g.play();

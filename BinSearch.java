@@ -13,12 +13,12 @@ public class BinSearch {
     public static int binSearch ( int[] a, int target ) {
 	
 	return binSearchIter( a, target, 0, a.length-1);
-	// return binSearchRec( a, target, 0, a.length-1 );
+	//return binSearchRec( a, target, 0, a.length-1 );
     }
 
 
     public static int binSearchRec( int[] a, int target, int lo, int hi ) {
-        int guess = ((hi - lo) / 2) + lo;
+        int guess = ((hi - lo) / 2 + lo);
 	if (!isSorted(a)) {
 	    System.out.println("The array is not sorted, BEGONE");
 	    return -1;
@@ -27,7 +27,7 @@ public class BinSearch {
 	    return guess;
 	}
 	else {
-	    if (lo == hi) 
+	    if (lo >= hi) 
 		return -1;
 	    else if (a[guess] > target) {
 		hi = guess;
@@ -50,11 +50,24 @@ public class BinSearch {
 	}
 	_guessCtr += 1;
 	while (a[guess] != target) {
+<<<<<<< HEAD
+	    if (lo >= hi) {
+=======
 	    if (lo == hi || (hi - lo == 1)) {
+>>>>>>> 35dc8597c9c6ffc99e2707c631a3a7179161f14f
 		return -1;
 	    }
+	    
 	    guess = ((hi - lo) / 2) + lo;
+<<<<<<< HEAD
 	    //System.out.println("My next guess is:\n" + hi + "\n" + lo + "\n" + guess);
+=======
+<<<<<<< HEAD
+	    System.out.println("My next Gues;\n" + hi + "\n" + lo + "\n" + guess + "\n" + a[guess]);
+=======
+	    System.out.println("My next guess is:\n" + hi + "\n" + lo + "\n" + guess);
+>>>>>>> 35dc8597c9c6ffc99e2707c631a3a7179161f14f
+>>>>>>> bd47182f6283d36c7e1df3f5ce283273453887fa
 	    if (a[guess] > target) 
 		hi = guess;
 	    else if (a[guess] < target)
@@ -77,6 +90,14 @@ public class BinSearch {
 	}
         return true;
     }
+
+    /*private static boolean isSorted (Comparable[] arr ) {
+	for (int x = 1; x < arr.length; x++) {
+	    if (arr[x-1].compareTo(arr[x]) > 0) 
+		return false;
+	}
+	return true;
+	}*/
 
 
     // utility/helper fxn to display contents of an array of Objects
@@ -113,18 +134,33 @@ public class BinSearch {
 	for (int x = 0; x < iArr3.length;x++) {
 	    iArr3[x] = x+1;
 	}
+<<<<<<< HEAD
 	System.out.println(isSorted(iArr3));
 	//printArray(iArr3);
 	System.out.println( binSearch(iArr3, rand));
 	//System.out.println( binSearch(iArr2, 1));
+=======
+	/*System.out.println(isSorted(iArr3));
+	printArray(iArr3);
+<<<<<<< HEAD
+	System.out.println( binSearch(iArr3, -1));
+	
+
+
+	
+=======
+	System.out.println( binSearch(iArr3, rand));*/
+	System.out.println( binSearch(iArr2, 1));
+>>>>>>> bd47182f6283d36c7e1df3f5ce283273453887fa
 	/*==================================================
+>>>>>>> 35dc8597c9c6ffc99e2707c631a3a7179161f14f
         //search for 6 in array 
-        System.out.println( binSearch(iArr,6) );
+        System.out.println( binSearch(iArr2,6) );
 
         //search for 43 in array 
-        System.out.println( binSearch(iArr,43) );
+	//System.out.println( binSearch(iArr2,43) );
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+	/*==================================================
         ==================================================*/
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

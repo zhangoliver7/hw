@@ -25,8 +25,8 @@ public class Rational implements Comparable {
 		return this.compareTo((Rational)obj) == 0;
 	}
 
-	public long floatValue() {
-		return (double)(numerator/denominator);
+	public double floatValue() {
+		return (double)((numerator + 0.0)/(denominator + 0.0));
 	}
 
 	public void multiply(Rational n) {
@@ -104,22 +104,8 @@ public class Rational implements Comparable {
 	public int compareTo(Object n) {
 		((Rational)n).reduce();
 		this.reduce();
+		return numerator * ((Rational)n).denominator - ((Rational)n).numerator * denominator;
 		
-		if (((Rational)n).denominator == denominator) return numerator - ((Rational)n).numerator;
-	
-	
-		else {
-			int spotHoldD = denominator;
-		
-		
-			numerator = numerator * ((Rational)n).denominator;
-		
-		
-			((Rational)n).numerator = ((Rational)n).numerator * denominator;
-			
-			return numerator - ((Rational)n).numerator;
-		}
-
 	}
 	
 	
