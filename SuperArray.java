@@ -1,8 +1,7 @@
-/*==================================================
-  class SuperArray
-  Wrapper class for array. Facilitates resizing, 
-  getting and setting element values.
-  ==================================================*/
+//Oliver Zhang
+//pd 8
+//2013-12-2
+//HW 36
 
 public class SuperArray {
 
@@ -39,38 +38,48 @@ public class SuperArray {
 
     //double capacity of this instance of SuperArray 
     private void expand() { 
-        // *** YOUR IMPLEMENTATION HERE *** 
+        
+	int[] b = new int[_size * 2];
+	for (int i = 0; i < _size; i++) {
+	    b[i] = this._data[i];
+	}
+	this._data = b;
+	
     }
 
 
     //accessor method -- return value at specified index
     public int get( int index ) {
-        // *** YOUR IMPLEMENTATION HERE *** 
+         
         return _data[index];
     }
 
 
     //mutator method -- set index to newVal, return old value at index
     public int set( int index, int newVal ) {
-        // *** YOUR IMPLEMENTATION HERE *** 
-        return -1; 
+	int oldVal = _data[index];
+        _data[index] = newVal;
+        return oldVal; 
     }
 
-    public static void grow(int[] a, int size) {
-	int length = a.length + size;
+    public static void grow(SuperArray a, int size) {
+	int length = a._data.length + size;
 	int[] b = new int[length];
-	for (int i = 0; i < a.length; i++) {
-	    b[i] = a[i];
+	for (int i = 0; i < a._data.length; i++) {
+	    b[i] = a._data[i];
 	}
-	a = b;
+	a._data = b;
+	System.out.println(a._data);
     }
 
     //main method for testing
     public static void main( String[] args ) {
-	int[] x = {1,2,3,4,5,6};
-	grow(x,8);
-	System.out.println(x);
-        /*===========================================
+	SuperArray arr = new SuperArray();
+	arr.expand();
+	
+	System.out.println(arr);
+	
+       
         SuperArray curtis = new SuperArray();
         System.out.println( "Printing empty SuperArray curtis..." );
         System.out.println( curtis );
@@ -82,6 +91,7 @@ public class SuperArray {
 
         System.out.println("Printing populated SuperArray curtis...");
         System.out.println(curtis);
+	 /*===========================================
         ===========================================*/
 
     }
