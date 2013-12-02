@@ -54,7 +54,7 @@ public class BinSearch {
 		return -1;
 	    }
 	    guess = ((hi - lo) / 2) + lo;
-	    System.out.println("My next guess is:\n" + hi + "\n" + lo + "\n" + guess);
+	    //System.out.println("My next guess is:\n" + hi + "\n" + lo + "\n" + guess);
 	    if (a[guess] > target) 
 		hi = guess;
 	    else if (a[guess] < target)
@@ -99,7 +99,7 @@ public class BinSearch {
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         System.out.println("\nNow testing binSearch on int array...");
-	int rand = (int)(Math.random() * 100);
+	int rand = (int)(Math.random() * 100000);
         //Declare and initialize array of ints
         int[] iArr = { 2, 4, 6, 8, 6, 42 };
         printArray( iArr );
@@ -109,14 +109,14 @@ public class BinSearch {
         printArray( iArr2 );
         System.out.println( "sorted? -- " + isSorted(iArr2) );
 
-	int[] iArr3 = new int[100];
+	int[] iArr3 = new int[100000];
 	for (int x = 0; x < iArr3.length;x++) {
 	    iArr3[x] = x+1;
 	}
-	/*System.out.println(isSorted(iArr3));
-	printArray(iArr3);
-	System.out.println( binSearch(iArr3, rand));*/
-	System.out.println( binSearch(iArr2, 1));
+	System.out.println(isSorted(iArr3));
+	//printArray(iArr3);
+	System.out.println( binSearch(iArr3, rand));
+	//System.out.println( binSearch(iArr2, 1));
 	/*==================================================
         //search for 6 in array 
         System.out.println( binSearch(iArr,6) );
