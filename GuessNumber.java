@@ -107,7 +107,11 @@ public class GuessNumber {
     public static void main( String[] args ) {
 
         //instantiate a new game
+<<<<<<< HEAD
         GuessNumber g = new GuessNumber(1,25);
+=======
+        GuessNumber g = new GuessNumber(1,900000);
+>>>>>>> 35dc8597c9c6ffc99e2707c631a3a7179161f14f
 
         //start the game
         g.play();

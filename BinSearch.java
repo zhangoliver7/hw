@@ -50,12 +50,20 @@ public class BinSearch {
 	}
 	_guessCtr += 1;
 	while (a[guess] != target) {
+<<<<<<< HEAD
 	    if (lo >= hi) {
+=======
+	    if (lo == hi || (hi - lo == 1)) {
+>>>>>>> 35dc8597c9c6ffc99e2707c631a3a7179161f14f
 		return -1;
 	    }
 	    
 	    guess = ((hi - lo) / 2) + lo;
+<<<<<<< HEAD
 	    System.out.println("My next Gues;\n" + hi + "\n" + lo + "\n" + guess + "\n" + a[guess]);
+=======
+	    System.out.println("My next guess is:\n" + hi + "\n" + lo + "\n" + guess);
+>>>>>>> 35dc8597c9c6ffc99e2707c631a3a7179161f14f
 	    if (a[guess] > target) 
 		hi = guess;
 	    else if (a[guess] < target)
@@ -122,13 +130,19 @@ public class BinSearch {
 	for (int x = 0; x < iArr3.length;x++) {
 	    iArr3[x] = x+1;
 	}
-	System.out.println(isSorted(iArr3));
+	/*System.out.println(isSorted(iArr3));
 	printArray(iArr3);
+<<<<<<< HEAD
 	System.out.println( binSearch(iArr3, -1));
 	
 
 
 	
+=======
+	System.out.println( binSearch(iArr3, rand));*/
+	System.out.println( binSearch(iArr2, 1));
+	/*==================================================
+>>>>>>> 35dc8597c9c6ffc99e2707c631a3a7179161f14f
         //search for 6 in array 
         System.out.println( binSearch(iArr2,6) );
 

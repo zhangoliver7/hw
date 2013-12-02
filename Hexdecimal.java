@@ -42,6 +42,10 @@ public class Hexdecimal implements Comparable {
 	return _hexNum;
     }
 
+    public String getHexNum() {
+	return _hexNum;
+    }
+
     public static String ArrayElementsINT(int[] x) {
 	String retStr = "";
 	for (int y = 0;y < x.length; y++) {

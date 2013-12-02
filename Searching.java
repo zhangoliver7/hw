@@ -163,7 +163,7 @@ public class Searching {
        
 
 
-	/*==================================================
+	
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         System.out.println("\nNow testing linSearch on int array...");
 
@@ -256,7 +256,7 @@ public class Searching {
         //search for 100 in array
         System.out.println( linSearch(hArr, new Hexdecimal(256)) );
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	==================================================*/
+	
 
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
         System.out.println("\nNow testing linSearch on Comparable array...");
@@ -301,7 +301,8 @@ public class Searching {
 	//System.out.println( "You are entering error-land:\nSearching for 3" );
 	//System.out.println (objSearch(intArr, 3));
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~        
-
+	/*==================================================
+	==================================================*/
         //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	 
         
