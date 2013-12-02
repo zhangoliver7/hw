@@ -162,7 +162,7 @@ public class Hexdecimal implements Comparable {
         Hexdecimal h1 = new Hexdecimal(10);
         Hexdecimal h2 = new Hexdecimal(10);
         Hexdecimal h3 = h1;
-        Hexdecimal h4 = new Hexdecimal(1724);
+        Hexdecimal h4 = new Hexdecimal();
 	String foo = "foo";
 	int[] hey = {1,2,3,4,5,6,99,0};
 	String[] heyo = {"what", "is", "love"};
