@@ -19,8 +19,8 @@ public class SuperArray {
     //initializes 10-item array
     public SuperArray() { 
         _data = new int[10];
-        _lastPos = 0;
-        _size = 0;        
+        _lastPos = _data.length;
+        _size = _data.length;        
     }
 
     //output array in [a,b,c] format
@@ -31,10 +31,10 @@ public class SuperArray {
         for( int i = 0; i < _size; i++ ) {
             foo += _data[i] + ",";
         }
-        if ( foo.length() > 1 )
+	if ( foo.length() > 1 )
             //shave off trailing comma
             foo = foo.substring( 0, foo.length()-1 );
-        foo += "]";
+	foo += "]";
         return foo;
     }
 
@@ -44,6 +44,7 @@ public class SuperArray {
         for( int i = 0; i < _data.length; i++ )
             temp[i] = _data[i];
         _data = temp;
+	_size = _data.length;
     }
 
     //accessor method -- return value at specified index
@@ -61,13 +62,31 @@ public class SuperArray {
 
     //adds an item after the last item
     public void add( int newVal ) { 
-        //*** YOUR IMPLEMENTATION HNYAH ***
+        int[] temp = new int[_size + 1];
+	for( int i = 0; i < _size; i++) {
+	    temp[i] = _data[i];
+	}
+	temp[_size] = newVal;
+	_data = temp;
+	_size = _data.length;
     }
 
 
     //inserts an item at index    
     public void add( int index, int newVal ) { 
-        //*** YOUR IMPLEMENTATION HNYAH ***
+        int[] temp1 = new int[index + 1];
+	for( int i = 0; i < temp1.length; i++) {
+	    temp1[i] = _data[i];
+	}
+	temp1[index] = newVal;
+	int[] temp2 = new int[_size + 1];
+	for (int i = 0; i < temp1.length; i++) {
+	    temp2[i] = temp1[i];
+	}
+	for (int i = temp1.length; i < temp2.length; i++) {
+	    temp2[i] = _data[i];
+	}
+	_data = temp2;
     }
 
 
@@ -106,7 +125,7 @@ public class SuperArray {
                                + curtis._data.length );
         }
 
-        /*===========================================
+        
         SuperArray mayfield = new SuperArray();
         System.out.println("Printing empty SuperArray mayfield...");
         System.out.println(mayfield);
@@ -119,14 +138,14 @@ public class SuperArray {
 
         System.out.println("Printing populated SuperArray mayfield...");
         System.out.println(mayfield);
-
+	/*===========================================
         mayfield.remove(3);
         System.out.println("Printing SuperArray mayfield post-remove...");
         System.out.println(mayfield);
         mayfield.remove(3);
         System.out.println("Printing SuperArray mayfield post-remove...");
         System.out.println(mayfield);
-
+	===========================================*/
         mayfield.add(3,99);
         System.out.println("Printing SuperArray mayfield post-insert...");
         System.out.println(mayfield);
@@ -136,7 +155,7 @@ public class SuperArray {
         mayfield.add(1,77);
         System.out.println("Printing SuperArray mayfield post-insert...");
         System.out.println(mayfield);
-        ===========================================*/
+        
     }//end main()
 
 }//end class SuperArray
