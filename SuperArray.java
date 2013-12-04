@@ -1,13 +1,7 @@
-/*==================================================
-  class SuperArray version 2.0
-  Wrapper class for array. Facilitates 
-  resizing 
-  expansion 
-  read/write capability on elements
-  adding an element to end of array
-  adding an element at specified index
-  removing an element at specified index
-  ==================================================*/
+//Oliver Zhang
+//pd 8
+//2013-12-3
+//HW 37
 
 public class SuperArray {
 
@@ -74,33 +68,61 @@ public class SuperArray {
 
     //inserts an item at index    
     public void add( int index, int newVal ) { 
-        int[] temp1 = new int[index + 1];
-	for( int i = 0; i < temp1.length; i++) {
-	    temp1[i] = _data[i];
+        int[] temp = new int[_size + 1];
+	
+	for( int i = 0; i < _size + 1; i ++) {
+	    if (i == index)
+		temp[i] = newVal;
+	    else if (i > index) 
+		temp[i] = _data[i - 1];
+	    else if (i < index)
+		temp[i] = _data[i];
+	    
+	    
 	}
-	temp1[index] = newVal;
-	int[] temp2 = new int[_size + 1];
-	for (int i = 0; i < temp1.length; i++) {
-	    temp2[i] = temp1[i];
-	}
-	for (int i = temp1.length; i < temp2.length; i++) {
-	    temp2[i] = _data[i];
-	}
-	_data = temp2;
+	_data = temp;
+	_size = _data.length;
+	
     }
 
+     private static void printArray( int[] arr ) {
+        String output = "[ "; 
+
+        for( int i : arr )
+            output += i + ", ";
+
+        output = output.substring( 0, output.length()-2 ) + " ]";
+
+        System.out.println( output + "\n");
+    }
 
     //removes the item at index
     //shifts elements left to fill in newly-empted slot
     public void remove( int index ) { 
-        //*** YOUR IMPLEMENTATION HNYAH ***
+        int[] temp = new int[_size - 1];
+	
+	for( int i = 0; i < _size - 1; i ++) {
+	    
+	    if (i >= index) 
+		temp[i] = _data[i + 1];
+	     if (i < index)
+		temp[i] = _data[i];
+	    
+	    
+	}
+	_data = temp;
+	_size = _data.length;
     }
 
 
     //return number of meaningful items in _data
     public int size() {
-        //*** YOUR IMPLEMENTATION HNYAH ***
-        return -1; //placeholder
+        int ret = 0;
+	for (int x : _data) {
+		if (x != 0)
+			ret += 1;	
+	}
+        return ret; //placeholder
     }
 
 
@@ -129,23 +151,26 @@ public class SuperArray {
         SuperArray mayfield = new SuperArray();
         System.out.println("Printing empty SuperArray mayfield...");
         System.out.println(mayfield);
-
+	
         mayfield.add(5);
+	
         mayfield.add(4);
         mayfield.add(3);
         mayfield.add(2);
-        mayfield.add(1);
+        mayfield.add(1000);
 
         System.out.println("Printing populated SuperArray mayfield...");
         System.out.println(mayfield);
-	/*===========================================
-        mayfield.remove(3);
+	
+        mayfield.remove(10);
         System.out.println("Printing SuperArray mayfield post-remove...");
         System.out.println(mayfield);
         mayfield.remove(3);
         System.out.println("Printing SuperArray mayfield post-remove...");
         System.out.println(mayfield);
-	===========================================*/
+	System.out.println(mayfield.size());
+	/*
+	
         mayfield.add(3,99);
         System.out.println("Printing SuperArray mayfield post-insert...");
         System.out.println(mayfield);
@@ -155,7 +180,7 @@ public class SuperArray {
         mayfield.add(1,77);
         System.out.println("Printing SuperArray mayfield post-insert...");
         System.out.println(mayfield);
-        
+        ===========================================*/
     }//end main()
 
 }//end class SuperArray
