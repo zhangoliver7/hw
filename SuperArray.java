@@ -3,7 +3,7 @@
 //2013-12-3
 //HW 37
 
-public class SuperArray {
+public class SuperArray implements ListInt {
 
     private int[] _data;  //underlying container structure
     private int _lastPos; //marker for last meaningful value
@@ -55,7 +55,7 @@ public class SuperArray {
 
 
     //adds an item after the last item
-    public void add( int newVal ) { 
+    public boolean add( int newVal ) { 
         int[] temp = new int[_size + 1];
 	for( int i = 0; i < _size; i++) {
 	    temp[i] = _data[i];
@@ -63,6 +63,7 @@ public class SuperArray {
 	temp[_size] = newVal;
 	_data = temp;
 	_size = _data.length;
+	return true;
     }
 
 
@@ -82,7 +83,7 @@ public class SuperArray {
 	}
 	_data = temp;
 	_size = _data.length;
-	
+	 
     }
 
      private static void printArray( int[] arr ) {
@@ -98,20 +99,18 @@ public class SuperArray {
 
     //removes the item at index
     //shifts elements left to fill in newly-empted slot
-    public void remove( int index ) { 
+    public int remove( int index ) { 
         int[] temp = new int[_size - 1];
-	
+	int retInt = _data[index];
 	for( int i = 0; i < _size - 1; i ++) {
-	    
 	    if (i >= index) 
 		temp[i] = _data[i + 1];
 	     if (i < index)
 		temp[i] = _data[i];
-	    
-	    
 	}
 	_data = temp;
 	_size = _data.length;
+	return retInt;
     }
 
 
